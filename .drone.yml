@@ -1,0 +1,5 @@
+build:
+  image: bjodah/bjodahimg16dev:latest
+  commands:
+    - ./scripts/run_tests.sh
+    - bash -c '[[ $(python3 setup.py --version) =~ ^[0-9]+.* ]]'
