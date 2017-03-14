@@ -1,0 +1,7 @@
+.config/
+.cache/
+**__pycache__
+MANIFEST
+*.egg-info
+dist/
+build/
