@@ -1,6 +1,8 @@
 pydollar
 ========
 
+.. image:: https://travis-ci.org/bjodah/pydollar.png?branch=master
+   :target: https://travis-ci.org/bjodah/pydollar
 .. image:: http://hera.physchem.kth.se:9090/api/badges/bjodah/pydollar/status.svg
    :target: http://hera.physchem.kth.se:9090/bjodah/pydollar
    :alt: Build status
