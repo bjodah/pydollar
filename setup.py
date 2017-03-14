@@ -20,6 +20,7 @@ _author, _author_email = open(_path_under_setup('AUTHORS'), 'rt').readline().spl
 
 setup_kwargs = dict(
     name=mod_name,
+    py_modules=[mod_name],
     version=__version__,
     description=short_description,
     long_description=long_descr,

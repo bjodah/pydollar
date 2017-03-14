@@ -30,9 +30,11 @@ Take for example a file called ``mymodule.py``:
 
 .. code:: python
 
+   from sympy import Symbol
+
    def my_func():
-       hello, world = map(str.capitalize, $)
-       print(hello, world)
+       alpha, beta, gamma, delta, epsilon = symbs = map(Symbol, $)
+       return symbs
 
 we could then import from it by first intalling an import hook:
 
@@ -41,8 +43,10 @@ we could then import from it by first intalling an import hook:
    >>> import pydollar
    >>> pydollar.install_import_hook()
    >>> from mymodule import my_func
+   >>> from sympy import init_printing
+   >>> init_printing()
    >>> my_func()
-   ('Hello', 'World')
+   (α, β, γ, δ, ε)
 
     
 Motivation

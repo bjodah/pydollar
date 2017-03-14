@@ -11,7 +11,7 @@ import io
 import sys
 import tokenize
 
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 
 # inspiration from blog post:

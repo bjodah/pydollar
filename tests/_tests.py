@@ -19,4 +19,9 @@ def case_3():
     return ' '.join(args)
 case_3.expected = 'HOUSTON DO YOU COPY'
 
-cases = (case_1, case_2, case_3)
+def case_4():
+    alpha, beta, gamma = d = {k: k.upper() for k in $}
+    return d
+case_4.expected = {'alpha': 'ALPHA', 'beta': 'BETA', 'gamma': 'GAMMA'}
+
+cases = (case_1, case_2, case_3, case_4)
