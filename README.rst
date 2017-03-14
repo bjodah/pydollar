@@ -29,27 +29,31 @@ pydollar
 About pydollar
 --------------
 `pydollar <https://github.com/bjodah/pydollar>`_ is a `Python <https://www.python.org>`_ module
- which enables a non-native syntax for the dollar sign ``$`` in Python code. It allows you to
- follow the DRY-principle (don't repeat yourself) more stricly when writing python code:
+which enables a non-native syntax for the dollar sign ``$`` in Python code. It allows you to
+follow the DRY-principle (don't repeat yourself) more stricly when writing python code:
 
-``mymodule.py``::
+Take for example a file called ``mymodule.py``:
+
 .. code:: python
 
    def my_func():
-       hello, world = map(str.upper, $)
+       hello, world = map(str.capitalize, $)
        print(hello, world)
 
+we could then import from it by first intalling an import hook:
 
 .. code:: python
-    >>> import pydollar
-    >>> pydollar.install_import_hook()
-    >>> from mymodule import my_func
-    >>> my_func()
-    ('Hello', 'World')
 
+   >>> import pydollar
+   >>> pydollar.install_import_hook()
+   >>> from mymodule import my_func
+   >>> my_func()
+   ('Hello', 'World')
+
+    
 Motivation
 ----------
-f-strings were a great additon to Python 3.6, the ``$`` syntax is in the same spirit,
+f-strings were a great additon to Python 3.6, the ``$`` syntax follows it in spirit,
 it simply allows you to write succinct code.
 
 If ``$`` syntax (or more importantly, the functionality it provides) becomes official syntax
@@ -62,16 +66,9 @@ Installation
 ------------
 Simplest way to install pydollar is to use ``pip``::
   
-   $ python -m pip install --user --upgrade pydollar pytest
-   $ python -m pytest --pyargs pydollar
-
-alternatively you may also use the `conda package manager <https://conda.pydata.org/docs/>`_::
-
-   $ conda install -c bjodah pydollar pytest
-   $ python -m pytest --pyargs pydollar  # runs the test-suite
+   $ python -m pip install --user pydollar
 
 you can skip the ``--user`` flag if you have got root permissions.
-See `setup.py <setup.py>`_ for optional requirements.
 
 
 Examples
