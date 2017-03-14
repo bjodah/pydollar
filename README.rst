@@ -10,17 +10,9 @@ pydollar
 .. image:: https://img.shields.io/badge/python-3.5,3.6-blue.svg
    :target: https://www.python.org/
    :alt: Python version
-.. image:: https://zenodo.org/badge/8840/bjodah/pydollar.svg
-   :target: https://zenodo.org/badge/latestdoi/8840/bjodah/pydollar
 .. image:: https://img.shields.io/pypi/l/pydollar.svg
    :target: https://github.com/bjodah/pydollar/blob/master/LICENSE
    :alt: License
-.. image:: http://img.shields.io/badge/benchmarked%20by-asv-green.svg?style=flat
-   :target: http://hera.physchem.kth.se/~pydollar/benchmarks
-   :alt: airspeedvelocity
-.. image:: http://hera.physchem.kth.se/~pydollar/branches/master/htmlcov/coverage.svg
-   :target: http://hera.physchem.kth.se/~pydollar/branches/master/htmlcov
-   :alt: coverage
 
 
 .. contents::
@@ -66,7 +58,7 @@ Installation
 ------------
 Simplest way to install pydollar is to use ``pip``::
   
-   $ python -m pip install --user pydollar
+   $ python3 -m pip install --user pydollar
 
 you can skip the ``--user`` flag if you have got root permissions.
 
