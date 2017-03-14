@@ -1,3 +1,6 @@
+"""
+pydollar provides an installable import hook to support the dollar sign ($) as valid python syntax.
+"""
 import ast
 from collections import OrderedDict
 import importlib
@@ -7,6 +10,13 @@ import importlib.util
 import io
 import sys
 import tokenize
+
+__version__ = '0.1'
+
+
+# inspiration from blog post:
+# stupidpythonideas.blogspot.com/2015/06/hacking-python-without-hacking-python.html
+# improved design by consulting mercurial's __init__.py
 
 
 def walk_up_for_assign(node, parent_of):
@@ -60,9 +70,7 @@ def my_walk(tree):
     return parents
 
 
-class MyLoader(importlib.machinery.SourceFileLoader):
-    # from http://stupidpythonideas.blogspot.se/2015/06/hacking-python-without-hacking-python.html
-    # and with adaptions from mercurial
+class PyDollarLoader(importlib.machinery.SourceFileLoader):
 
     def get_data(self, path):
         data = super().get_data(path)
@@ -98,10 +106,10 @@ class MyLoader(importlib.machinery.SourceFileLoader):
         return compile(tree, path, 'exec', dont_inherit=True, optimize=_optimize)
 
 
-MyLoader.bytecodeheader = b'PD\x00\x00'  # must be bumped when this code changes.
+PyDollarLoader.bytecodeheader = b'PD\x00\x00'  # must be bumped when this code changes.
 
 
-class MyPathFinder(importlib.abc.MetaPathFinder):
+class PyDollarPathFinder(importlib.abc.MetaPathFinder):
 
     def find_spec(self, fullname, path, target=None):
         spec = None
@@ -115,10 +123,10 @@ class MyPathFinder(importlib.abc.MetaPathFinder):
                 break
         if not spec:
             return None
-        spec.loader = MyLoader(spec.name, spec.origin)
+        spec.loader = PyDollarLoader(spec.name, spec.origin)
         return spec
 
 
 def install_import_hook():
-    if not any(isinstance(x, MyPathFinder) for x in sys.meta_path):
-        sys.meta_path.insert(0, MyPathFinder())
+    if not any(isinstance(x, PyDollarPathFinder) for x in sys.meta_path):
+        sys.meta_path.insert(0, PyDollarPathFinder())
