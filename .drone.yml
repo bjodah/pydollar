@@ -1,5 +1,6 @@
 build:
   image: bjodah/bjodahimg16dev:latest
   commands:
+    - python3 -c "import pydollar; pydollar.install_import_hook(); import math"
     - ./scripts/run_tests.sh
     - bash -c '[[ $(python3 setup.py --version) =~ ^[0-9]+.* ]]'

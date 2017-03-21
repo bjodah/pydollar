@@ -123,10 +123,11 @@ class PyDollarPathFinder(importlib.abc.MetaPathFinder):
                 break
         if not spec:
             return None
-        spec.loader = PyDollarLoader(spec.name, spec.origin)
+        if spec.origin.endswith('.py'):
+            spec.loader = PyDollarLoader(spec.name, spec.origin)
         return spec
 
 
 def install_import_hook():
     if not any(isinstance(x, PyDollarPathFinder) for x in sys.meta_path):
-        sys.meta_path.insert(0, PyDollarPathFinder())
+        sys.meta_path.insert(1, PyDollarPathFinder())
