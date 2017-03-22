@@ -34,7 +34,7 @@ Take for example a file called ``mymodule.py``:
 
    def my_func():
        alpha, beta, gamma, delta, epsilon = symbs = map(Symbol, $)
-       return symbs
+       return symbs, alpha + beta**2 + gamma**3 + delta**4 + epsilon**5
 
 we could then import from it by first intalling an import hook:
 
@@ -44,9 +44,11 @@ we could then import from it by first intalling an import hook:
    >>> pydollar.install_import_hook()
    >>> from mymodule import my_func
    >>> from sympy import init_printing
-   >>> init_printing()
+   >>> init_printing(pretty_print=True, use_unicode=True)
    >>> my_func()
-   (α, β, γ, δ, ε)
+   ⎛                      2    4    5    3⎞
+   ⎝(α, β, γ, δ, ε), α + β  + δ  + ε  + γ ⎠
+
 
     
 Motivation
