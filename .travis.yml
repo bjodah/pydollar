@@ -3,7 +3,7 @@ python:
   - "3.5"
   - "3.6"
 install:
-  - pip install pytest
+  - pip install pytest sympy
 script: 
   - ./scripts/run_tests.sh
 notifications:
