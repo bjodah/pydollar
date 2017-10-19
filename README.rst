@@ -33,8 +33,8 @@ Take for example a file called ``mymodule.py``:
    from sympy import Symbol
 
    def my_func():
-       alpha, beta, gamma, delta, epsilon = symbs = map(Symbol, $)
-       return symbs, alpha + beta**2 + gamma**3 + delta**4 + epsilon**5
+       alpha, beta, gamma, delta, epsilon = symbs = list(map(Symbol, $))
+       return symbs
 
 we could then import from it by first intalling an import hook:
 
@@ -45,9 +45,9 @@ we could then import from it by first intalling an import hook:
    >>> from mymodule import my_func
    >>> from sympy import init_printing
    >>> init_printing(pretty_print=True, use_unicode=True)
-   >>> my_func()
-   ⎛                      2    4    5    3⎞
-   ⎝(α, β, γ, δ, ε), α + β  + δ  + ε  + γ ⎠
+   >>> sum([x**(i+1) for i, x in enumerate(my_func())])
+        2    4    5    3
+   α + β  + δ  + ε  + γ 
 
 
     
