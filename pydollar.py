@@ -35,6 +35,17 @@ def walk_up_for_assign(node, parent_of):
         return walk_up_for_assign(parent, parent_of)
 
 
+class SupportExclam(ast.NodeTransformer):
+    literal_token = '!'
+
+    def __init__(self, literal_name, tree, parent_of):
+        self.literal_name = literal_name
+        self.tree = tree
+        self.parent_of = parent_of
+
+    def visit_Name()
+
+
 class SupportDollar(ast.NodeTransformer):
 
     literal_token = '$'

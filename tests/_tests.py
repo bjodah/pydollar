@@ -24,4 +24,5 @@ def case_3():
     return d
 case_3.expected = {'alpha': 'ALPHA', 'beta': 'BETA', 'gamma': 'GAMMA'}
 
-cases = (case_0, case_1, case_2, case_3)
+
+cases = (case_0, case_1, case_2, case_3, case_4)
